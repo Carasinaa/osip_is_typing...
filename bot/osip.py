@@ -47,10 +47,10 @@ def callback_inline(call):
             bot.send_photo(call.message.chat.id, photo)
             bot.send_message(call.message.chat.id, "Осип Эмильевич Мандельштам (14 января 1891 -- 27 декабря 1938) "
                                                    "-- русский поэт, прозаик"
-                                                   " и переводчик серебряного века, жертва сталинских репрессий."
+                                                   " и переводчик серебряного века, жертва сталинских репрессий. "
                                                    "Является одним из представителей литературного движения акмеистов, "
-                                                   "куда входили также Ахматов и Гумилев. "
-                                                   "Если вас заинтересовало творчество Мандельштама или акмеситическое"
+                                                   "куда входили также Ахматова и Гумилев. "
+                                                   "Если вас заинтересовало творчество Мандельштама или акмеистическое"
                                                    " движение в целом, то можно почитать также и их работы и эссе.")
         if call.data == "osip_help":
             bot.send_message(call.message.chat.id, "Если что-то не работает или работает, но не так, как нужно, "
@@ -60,7 +60,7 @@ def callback_inline(call):
         if call.data == 'osip_stats':
             poses = open('poses.png', 'rb')
             words = open('wordcloud.png', 'rb')
-            bot.send_message(call.message.chat.id, f"Количество строк: {lines}\n Количество стихов: {titles}")
+            bot.send_message(call.message.chat.id, f"Количество строк: {lines}\nКоличество стихов: {titles}")
             bot.send_photo(call.message.chat.id, poses, 'Части речи, на которые чаще всего рифмуют')
             bot.send_photo(call.message.chat.id, words, 'Наиболее часто встречающиеся в стихах слова')
 
