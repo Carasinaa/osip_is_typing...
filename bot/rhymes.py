@@ -66,4 +66,4 @@ def findrhyme(sentence):
     random_line = random.choice(sentences)
     random_sentence = random_line[0]
     title = random_line[1]
-    return f'{random_sentence}\n Из "{title}"'
+    return f'{random_sentence}\nИз "{title}"'
