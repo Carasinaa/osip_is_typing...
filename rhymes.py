@@ -21,11 +21,15 @@ def rhymes(last_syl_1, last_syl_2):
         for p in pairs:
             if last_syl_1[-1] in p and last_syl_2[-1] in p:
                 if last_syl_1[-2] in vowels and last_syl_2[-2] in vowels:
-                    if last_syl_1[-3] and last_syl_2[-3] not in vowels:
-                        if last_syl_1[-2] == last_syl_2[-2]:
-                            return 'True'
+                    if len(last_syl_1) >= 3 and len(last_syl_2) >= 3:
+                        if last_syl_1[-3] and last_syl_2[-3] not in vowels:
+                            if last_syl_1[-2] == last_syl_2[-2]:
+                                return 'True'
+                        else:
+                            if last_syl_1[-3] == last_syl_2[-3]:
+                                return 'True'
                     else:
-                        if last_syl_1[-3] == last_syl_2[-3]:
+                        if last_syl_1[-2] == last_syl_2[-2]:
                             return 'True'
 
 
@@ -58,10 +62,8 @@ def findrhyme(sentence):
     for title in verses:
         for verse in verses[title]:
             if random_rhyme in verse:
-                sentences.append(verse[1])
-    random_sentence = random.choice(sentences)
-    return random_sentence
-
-
-sentence = input('Введите предложение: ')
-print(findrhyme(sentence))
+                sentences.append((verse[1], title))
+    random_line = random.choice(sentences)
+    random_sentence = random_line[0]
+    title = random_line[1]
+    return f'{random_sentence}\n Из "{title}"'
