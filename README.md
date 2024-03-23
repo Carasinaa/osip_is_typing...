@@ -26,6 +26,5 @@ pip3 install pymorphy2
 pip3 install bs4
 pip3 install string
 pip3 install re
-pip3 install rusyll
 pip3 install random
 ```
