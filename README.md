@@ -2,6 +2,7 @@
 ## Описание проекта
 Бот, выдающий на предложение пользователя строку из [стихов Осипа Мандельштама](https://rustih.ru/osip-mandelshtam/), подобранную в рифму.
 Бота можно попробовать в телеграме по этому тегу: [@osip_is_typing_bot](https://t.me/osip_is_typing_bot)
+Ссылка на [pythonanywhere](http://carasinaa.pythonanywhere.com/)
 
 ## Структура репозитория
 - crawler.py — файл с кодом краулера
