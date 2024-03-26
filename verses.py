@@ -5,12 +5,14 @@ import json
 verses_final = {}
 titles = []
 verses = []
+# в новый датафрейм сохраняем название стиха
 df = pd.read_csv('output.csv')
 for d in df['title']:
     titles.append(d)
 for d in df['verse']:
     verses.append(d)
 
+# делим текста стиха построчно, достаем последнее слово в строке, сохраняем все в датафрейм
 for i in range(len(titles)):
     title = titles[i]
     verse = verses[i]
