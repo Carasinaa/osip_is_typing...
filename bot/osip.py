@@ -5,6 +5,8 @@ from rhymes import findrhyme, rhymes, check_pair
 import json
 from stats import lines
 from stats import titles
+
+# инициализируем бота
 bot = telebot.TeleBot(config.TOKEN)
 
 vowels = ["а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"]
@@ -16,6 +18,7 @@ with open('verses.json', 'r', encoding='utf-8') as f:
     verses = json.load(f)
 
 
+# пишем клавиатуру с кнопочками
 keyboard = types.InlineKeyboardMarkup()
 osip_info = types.InlineKeyboardButton(text="Что ты такое?", callback_data="osip_info")
 osip_rhymes = types.InlineKeyboardButton(text="Хочу рифмовать!", callback_data="osip_rhymes")
@@ -29,12 +32,14 @@ keyboard.add(osip_help)
 keyboard.add(osip_stats)
 
 
+# приветственная кнопка
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.send_message(message.chat.id, "Я -- Осип, бот, отвечающий на ваше сообщение строчкой из"
                                       " творчества Осипа Мандельштама!", reply_markup=keyboard)
 
 
+# функционал кнопок
 @bot.callback_query_handler(func=lambda call: True)
 def callback_inline(call):
     if call.message:
@@ -58,6 +63,7 @@ def callback_inline(call):
         if call.data == 'osip_rhymes':
             bot.send_message(call.message.chat.id, "Пожалуйста,введите сообщение, на которое я выдам рифму!")
 
+        # кнопка для статистики, выводим графики, сохраненные в пнг
         if call.data == 'osip_stats':
             poses = open('poses.png', 'rb')
             words = open('wordcloud.png', 'rb')
@@ -66,6 +72,7 @@ def callback_inline(call):
             bot.send_photo(call.message.chat.id, words, 'Наиболее часто встречающиеся в стихах слова', reply_markup=keyboard)
 
 
+# функция работает при вводе сообщения ищет рифму
 @bot.message_handler(func=lambda m: True)
 def sendrhyme(message):
     text = message.text
