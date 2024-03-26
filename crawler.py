@@ -8,7 +8,7 @@ import pandas as pd
 ua = UserAgent()
 session = requests.session()
 
-
+# функции для парсинга страницы со стихами и каждого стиха отдельно, потом функция run_all, которая проходится по всему сайту
 def parse_news_page_block(one_block):
     block = {}
     p = one_block.find('a')
@@ -63,5 +63,5 @@ blocks = run_all(5)
 df = pd.DataFrame(blocks)
 df = df.drop_duplicates()
 
-print(df)
+# сохраняем в датафрейм
 df.to_csv('output.csv', encoding='utf-8')
